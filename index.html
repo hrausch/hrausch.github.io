@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Herbert Rausch</title>
+  <meta name="description" content="Professor de Computação no IFPR – Campus Cascavel, doutor em Bioinformática. Engenharia de dados, inteligência artificial e parcerias de P&amp;D&amp;I com empresas e órgãos públicos.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fbfaf7;
+      --surface: #ffffff;
+      --text: #1d2521;
+      --muted: #5d6963;
+      --line: #e4e2da;
+      --accent: #1f6f55;
+      --accent-ink: #ffffff;
+      --radius: 14px;
+      --max: 920px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #111614;
+        --surface: #182019;
+        --text: #e8ede9;
+        --muted: #93a19a;
+        --line: #26312b;
+        --accent: #5fc79f;
+        --accent-ink: #0c1310;
+      }
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Inter", system-ui, sans-serif;
+      font-size: 17px;
+      line-height: 1.65;
+    }
+
+    a { color: var(--accent); text-underline-offset: 3px; }
+    a:hover { text-decoration-thickness: 2px; }
+
+    h1, h2, h3 { font-family: "Fraunces", Georgia, serif; line-height: 1.2; margin: 0 0 .5em; }
+    h1 { font-size: clamp(2rem, 5vw, 3.1rem); font-weight: 600; letter-spacing: -0.01em; }
+    h2 { font-size: 1.6rem; font-weight: 600; margin-bottom: .8em; }
+    h3 { font-size: 1.15rem; font-weight: 600; }
+
+    /* Barra superior */
+    .topbar {
+      position: sticky; top: 0; z-index: 10;
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 1rem; flex-wrap: wrap;
+      padding: .8rem max(1.25rem, calc((100% - var(--max)) / 2));
+      background: color-mix(in srgb, var(--bg) 88%, transparent);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
+    .brand { font-family: "Fraunces", Georgia, serif; font-weight: 600; color: var(--text); text-decoration: none; font-size: 1.1rem; }
+    .topbar nav { display: flex; gap: 1.1rem; flex-wrap: wrap; }
+    .topbar nav a { color: var(--muted); text-decoration: none; font-size: .95rem; }
+    .topbar nav a:hover { color: var(--accent); }
+
+    /* Layout */
+    main { max-width: var(--max); margin: 0 auto; padding: 0 1.25rem; }
+    section { padding: 3.2rem 0 1rem; }
+
+    /* Topo */
+    .hero {
+      display: grid; grid-template-columns: 1fr 280px; gap: 2.5rem; align-items: center;
+      padding-top: 4rem;
+    }
+    .eyebrow { color: var(--accent); font-weight: 600; font-size: .9rem; letter-spacing: .04em; text-transform: uppercase; margin: 0 0 1rem; }
+    .lead { font-size: 1.15rem; color: var(--muted); max-width: 34em; }
+    .portrait {
+      width: 100%; max-width: 280px; height: auto; aspect-ratio: 4 / 5;
+      object-fit: cover; object-position: center top; border-radius: 22px;
+      border: 1px solid var(--line); background: var(--surface);
+      justify-self: center;
+    }
+    .actions { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1.5rem; }
+
+    .btn {
+      display: inline-block; padding: .65rem 1.15rem; border-radius: 999px;
+      border: 1px solid var(--line); background: var(--surface);
+      color: var(--text); text-decoration: none; font-weight: 500; font-size: .95rem;
+    }
+    .btn:hover { border-color: var(--accent); }
+    .btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+
+    /* Cards */
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+    .card {
+      background: var(--surface); border: 1px solid var(--line);
+      border-radius: var(--radius); padding: 1.25rem 1.3rem;
+    }
+    .card p { margin: 0; color: var(--muted); font-size: .97rem; }
+
+    /* Destaque de parceria */
+    .callout {
+      margin-top: 1.8rem; padding: 1.5rem 1.6rem;
+      background: var(--surface); border: 1px solid var(--line);
+      border-left: 4px solid var(--accent); border-radius: var(--radius);
+    }
+    .callout p:last-child { margin-bottom: 0; }
+
+    /* Contato */
+    .links { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: .6rem 1.4rem; }
+
+    footer {
+      max-width: var(--max); margin: 3rem auto 0; padding: 1.5rem 1.25rem 2.5rem;
+      border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem;
+    }
+
+    @media (max-width: 720px) {
+      .hero { grid-template-columns: 1fr; padding-top: 2.5rem; }
+      .portrait { order: -1; max-width: 160px; justify-self: start; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="#top">Herbert Rausch</a>
+  <nav>
+    <a href="#sobre">Sobre</a>
+    <a href="#interesses">Interesses</a>
+    <a href="#contato">Contato</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- TOPO -->
+  <section class="hero">
+    <div class="hero-text">
+      <p class="eyebrow">Professor · IFPR – Campus Cascavel</p>
+      <h1>Bioinformática, engenharia de dados e inovação.</h1>
+      <p class="lead">
+        Professor de Computação no IFPR e doutor em Bioinformática. Transformo desafios de dados,
+        otimização e automação em soluções digitais robustas, com pesquisa aplicada e inteligência artificial.
+      </p>
+      <p class="actions">
+        <a class="btn primary" href="https://lattes.cnpq.br/2162623148941573">Currículo Lattes</a>
+        <a class="btn" href="https://orcid.org/0000-0002-9624-774X">ORCID</a>
+      </p>
+    </div>
+    <img class="portrait" src="assets/photo.jpg" alt="Foto de Herbert Rausch" width="280" height="350">
+  </section>
+
+  <!-- SOBRE -->
+  <section id="sobre">
+    <h2>Sobre</h2>
+    <p>
+      Sou professor de Computação no IFPR – Campus Cascavel, com graduação em Ciência da Computação
+      e doutorado em Bioinformática. Tenho mais de 15 anos de experiência em engenharia de software,
+      bancos de dados e desenvolvimento de sistemas críticos.
+    </p>
+    <p>
+      Meu foco é transformar desafios reais em soluções digitais robustas, aplicando computação
+      avançada, como inteligência artificial, para gerar valor e impacto que se possam medir.
+    </p>
+
+    <div class="callout">
+      <h3>Parcerias de pesquisa, desenvolvimento e inovação</h3>
+      <p>
+        No IFPR – Campus Cascavel desenvolvemos projetos de P&amp;D&amp;I sob medida para empresas,
+        cooperativas e órgãos públicos. A parceria com o Instituto oferece um modelo de execução
+        ágil, focado em resultados, e reúne professores, pesquisadores e estudantes altamente
+        qualificados em projetos de alto impacto, com rapidez e customização.
+      </p>
+      <p>
+        Se a sua organização tem um desafio de otimização, dados ou automação que exige expertise
+        técnica de alto nível, vamos conversar para mapear a melhor solução digital.
+      </p>
+    </div>
+  </section>
+
+  <!-- INTERESSES -->
+  <section id="interesses">
+    <h2>Interesses</h2>
+    <div class="cards">
+      <article class="card">
+        <h3>Bioinformática</h3>
+        <p>Análise de sequências e ômicas, fluxos de trabalho reprodutíveis e apoio computacional à pesquisa de laboratório.</p>
+      </article>
+      <article class="card">
+        <h3>Engenharia de dados</h3>
+        <p>Engenharia de software, bancos de dados e pipelines para sistemas críticos, com dados rastreáveis, de qualidade e prontos para análise e IA.</p>
+      </article>
+      <article class="card">
+        <h3>Inovação</h3>
+        <p>Projetos de P&amp;D&amp;I sob medida com empresas, cooperativas e órgãos públicos, envolvendo estudantes, professores e pesquisadores.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contato">
+    <h2>Contato</h2>
+    <ul class="links">
+      <li><a href="mailto:herbert.fernandes@ifpr.edu.br">herbert.fernandes@ifpr.edu.br</a></li>
+      <li><a href="https://lattes.cnpq.br/2162623148941573">Lattes</a></li>
+      <li><a href="https://orcid.org/0000-0002-9624-774X">ORCID</a></li>
+      <li><a href="https://github.com/hrausch">GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/herbertfernandes/">LinkedIn</a></li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  <p>© <span id="year">2026</span> Herbert Rausch · IFPR – Campus Cascavel</p>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
